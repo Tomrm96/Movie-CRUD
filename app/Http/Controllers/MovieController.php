@@ -46,4 +46,9 @@ class MovieController extends Controller
         $movie->update($data);
         return redirect(route('movie.index'))->with('success', 'Movie Updated Succesfully');
     }
+
+    public function destroy(Movie $movie){
+        $movie->delete();
+        return redirect(route('movie.index'))->with('success', 'Movie Deleted Succesfully');
+    }
 }

@@ -15,6 +15,9 @@
         @endif
     </div>
     <div>
+        <div>
+            <a href="{{route('movie.create')}}">Add a Movie</a>
+        </div>
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -22,6 +25,7 @@
                 <th>Genre</th>
                 <th>Year</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
             @foreach($movies as $movie)
                 <tr>
@@ -31,6 +35,13 @@
                     <td>{{$movie->year}}</td>
                     <td>
                         <a href="{{route('movie.edit', ['movie' => $movie ])}}">Edit</a>
+                    </td>
+                    <td>
+                        <form method="post" action="{{route('movie.destroy', ['movie' => $movie])}}">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" value="Delete">
+                        </form>
                     </td>
                 </tr>
             @endforeach

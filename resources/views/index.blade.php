@@ -6,7 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HELLO!</h1>
+    <h1>Welcome To The Online Movie Database</h1>
+
+    <nav>
+        <ul><a href="{{route('movie.index')}}">ENTER</a></ul>
+    </nav>
 
     
 

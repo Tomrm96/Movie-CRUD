@@ -15,9 +15,13 @@
         @endif
     </div>
     <div>
-        <div>
+
+        <nav>
             <a href="{{route('movie.create')}}">Add a Movie</a>
-        </div>
+            <a href="{{route('movie.tmdb')}}">TMDB</a>
+
+        </nav>
+
         <table border="1">
             <tr>
                 <th>ID</th>

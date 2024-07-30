@@ -13,5 +13,6 @@ class Movie extends Model
         'name',
         'genre',
         'year',
+        'description',
     ];
 }

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a Movie</h1>
+    <h1>Manually Add a Movie</h1>
 
 
     <form method="post" action="{{route('movie.store')}}">
@@ -26,6 +26,12 @@
             <label for="">Year</label>
             <input type="text" name="year" placeholder="Year">
         </div>
+
+        <div>
+            <label for="">Description</label>
+            <input type="text" name="description" placeholder="Description">
+        </div>
+        
 
         <div>
             <input type="submit" value="Save a New Movie">

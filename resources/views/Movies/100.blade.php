@@ -7,17 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Search TMDB</h1>
 
+
+<div>
     <a href="{{route('movie.index')}}">HOME</a>
+</div>
 
-    <div>
-        <form action="{{route('movies.search')}}" method="GET">
-            <input type="text" placeholder="Search Movies" name="query">
-            <input type="submit" placeholder="Search">
-        </form>
-    </div>
-    
+<div>
+    <form action="{{ route('gettop') }}" method="GET">
+        <input type="submit" value="Show Top 100 Movies">
+    </form>
+</div>
 
 
     <table border="1">

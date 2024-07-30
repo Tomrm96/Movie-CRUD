@@ -16,7 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('genre');
-            $table->integer('year');
+            $table->string('year');
+            $table->text('description');
         });
     }
 

@@ -17,9 +17,9 @@
     <div>
 
         <nav>
-            <a href="{{route('movie.create')}}">Add a Movie</a>
-            <a href="{{route('movie.tmdb')}}">TMDB</a>
-
+            <button type="text"><a href="{{route('movie.tmdb')}}">Search TMDB</a></a></button>
+            <button type="text"><a href="{{route('movie.create')}}">Manually Add a Movie</a></a></button>                                  
+            <button type="text"><a href="{{route('100.tmdb')}}">Top 100</a></button>
         </nav>
 
         <table border="1">
@@ -28,8 +28,7 @@
                 <th>Name</th>
                 <th>Genre</th>
                 <th>Year</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Description</th>
             </tr>
             @foreach($movies as $movie)
                 <tr>
@@ -37,6 +36,7 @@
                     <td>{{$movie->name}}</td>
                     <td>{{$movie->genre}}</td>
                     <td>{{$movie->year}}</td>
+                    <td>{{$movie->description}}</td>
                     <td>
                         <a href="{{route('movie.edit', ['movie' => $movie ])}}">Edit</a>
                     </td>

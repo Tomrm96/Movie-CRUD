@@ -20,4 +20,4 @@ use App\Http\Controllers\MovieController;
 
 //API for TMDB
 Route::get('/movies/search', [MovieController::class, 'search'])->name('movies.search');
-Route::get('/movies/{id}', [MovieController::class, 'show']);
+Route::get('/movies/top100', [MovieController::class, 'getTop100Movies'])->name('gettop');

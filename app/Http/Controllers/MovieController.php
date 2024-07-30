@@ -26,19 +26,22 @@ class MovieController extends Controller
         }
 
         $movies = $this->MovieService->searchMovies($query);
-        return response()->json($movies);
+        return view('movies.tmdb', ['movies' => $movies['results']]);
 
     }
 
 
-    public function show($id){
-        $movie = $this->MovieService->getMovieDetails($id);
-
-        if(!$movie){
-            return response()->json(['error!' => 'movie not found']);
+    public function getTop100Movies()
+    {
+        $moviesData = $this->MovieService->getTop100();
+    
+        if (isset($moviesData['error'])) {
+            return response()->json(['error' => $moviesData['error']], 500);
         }
-        return response()->json($movie);
+    
+        return view('movies.100', ['movies' => $moviesData['results']]);
     }
+    
 
     public function index(){
         $movies = Movie::all();
@@ -52,15 +55,15 @@ class MovieController extends Controller
 
     public function store(Request $request){
         $data = $request->validate([
-            'name'=> 'required',
-            'genre'=> 'required',
-            'year'=> 'required|numeric',
-
+            'name' => 'required',
+            'genre' => 'required',
+            'year' => 'required',
+            'description' => 'required',
         ]);
 
         $newMovie = Movie::create($data);
 
-        return redirect(route('movie.index'));
+        return redirect()->route('movie.index')->with('success', 'Movie added successfully');
 
     }
 
@@ -70,10 +73,10 @@ class MovieController extends Controller
 
     public function update(Movie $movie, Request $request){
         $data = $request->validate([
-            'name'=> 'required',
-            'genre'=> 'required',
-            'year'=> 'required|numeric',
-
+            'name' => 'required',
+            'genre' => 'required',
+            'year' => 'required',
+            'description' => 'required',
         ]);
 
         $movie->update($data);
@@ -86,9 +89,11 @@ class MovieController extends Controller
     }
 
     public function tmdbIndex(){
-        return view('movies.tmdb');
+        return view('movies.tmdb', ['movies' => []]);
     }
 
-
+    public function topTMDB(){
+        return view('movies.100', ['movies' => []]);
+    }
 
 }

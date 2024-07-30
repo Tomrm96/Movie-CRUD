@@ -24,14 +24,18 @@ class MovieService
     }
 
 
-    public function getMovieDetails($id){
-        $response = Http::get("{$this->API_URL}/movie/{$id}", [
+    public function getTop100(){
+        $response = Http::get("{$this->API_URL}/movie/top_rated", [
             'api_key' => $this->API_KEY,
+            'language' => 'en-US',
+            'page' => 1
         ]);
+
 
         return $response->json();
     }
 
-
-
 }
+
+
+

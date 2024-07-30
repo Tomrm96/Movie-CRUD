@@ -29,6 +29,11 @@
         </div>
 
         <div>
+            <label for="">Description</label>
+            <input type="text" name="description" placeholder="Description" value="{{$movie->description}}">
+        </div>
+
+        <div>
             <input type="submit" value="Update">
         </div>
 

@@ -31,6 +31,7 @@ class MovieController extends Controller
     // }
 
     public function update(Movie $movie, movieValidator $request){
+       
         $data = $request->validated();
 
         if(!$data)

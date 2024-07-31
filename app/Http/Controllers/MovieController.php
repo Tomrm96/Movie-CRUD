@@ -35,8 +35,8 @@ class MovieController extends Controller
     {
         $moviesData = $this->MovieService->getTop100();
     
-        if (isset($moviesData['error'])) {
-            return response()->json(['error' => $moviesData['error']], 500);
+        if (!$moviesData) {
+            return response()->json(['error!' => 'error in collecting movies']);
         }
     
         return view('movies.100', ['movies' => $moviesData['results']]);

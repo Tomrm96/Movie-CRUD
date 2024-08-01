@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Services\MovieService;
 use App\Http\Requests\movieValidator;
+use Illuminate\Http\JsonResponse;
 
 class TMDBController extends Controller
 {
@@ -15,7 +16,7 @@ class TMDBController extends Controller
         $this->MovieService = $MovieService;
     }
 
-    public function search(Request $request)
+    public function search(Request $request):JsonResponse
     {
         $query = $request->input('query');
         if (!$query){
@@ -25,7 +26,7 @@ class TMDBController extends Controller
         return response()->json(['movies' => $movies['results']]);
     }
 
-    public function getTop100Movies()
+    public function getTop100Movies():JsonResponse
     {
         $moviesData = $this->MovieService->getTop100();
         if (!$moviesData) {
@@ -34,11 +35,5 @@ class TMDBController extends Controller
         return response()->json(['movies' => $moviesData['results']]);
     }
 
-    public function tmdbIndex(){
-        return response()->json(['movies' => []]);
-    }
 
-    public function topTMDB(){
-        return response()->json(['movies' => []]);
-    }
 }

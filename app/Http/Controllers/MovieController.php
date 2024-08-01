@@ -6,18 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Services\MovieService;
 use App\Http\Requests\movieValidator;
+use Illuminate\Http\JsonResponse;
 
 class MovieController extends Controller
 {
 
-    public function show()
+    public function show():JsonResponse
     {
         $movies = Movie::all();
         return response()->json(['movies' => $movies]);
 
     }
 
-    public function store(movieValidator $request){
+    public function store(movieValidator $request):JsonResponse
+    {
         $data = $request->validated();
 
         $newMovie = Movie::create($data);
@@ -26,25 +28,27 @@ class MovieController extends Controller
 
     }
 
-    // public function edit(Movie $movie){
-    //     return view('movies.edit',['movie' => $movie ]);
-    // }
 
-    public function update(Movie $movie, movieValidator $request){
-       
+    public function update(Movie $movie, movieValidator $request):JsonResponse
+    {
+
         $data = $request->validated();
 
         if(!$data)
         {
+
             return response()->json(['error!' => 'query is empty'], 400);
         }
         $movie->update($data);
+
         return response()->json(['success' => 'Movie updated successfully'], 200);
     }
 
-    public function destroy(Movie $movie){
+    public function destroy(Movie $movie):JsonResponse
+    {
         $movie->delete();
-        return redirect(route('movie.index'))->with('success', 'Movie Deleted Succesfully', 200);
+       
+        return response()->json(['success' => 'Movie Deleted successfully'], 200);
     }
 
 }

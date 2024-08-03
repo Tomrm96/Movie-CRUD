@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('genre');
             $table->string('year');
             $table->text('description');
+            $table->softDeletes();
         });
     }
 

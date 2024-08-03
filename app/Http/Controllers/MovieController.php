@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Models\Movie;
-use App\Services\MovieService;
 use App\Http\Requests\movieValidator;
 use Illuminate\Http\JsonResponse;
 

@@ -10,8 +10,8 @@ class MovieService
     protected $API_KEY;
 
     public function __construct(){
-        $this->API_URL = env('MOVIE_API_URL', 'https://api.themoviedb.org/3');
-        $this->API_KEY = env('MOVIE_API_KEY=', '4945709fa53ab91f4adf531cc210a58c');
+        $this->API_URL = env('MOVIE_API_URL');
+        $this->API_KEY = env('MOVIE_API_KEY');
 
         $this->client = Http::baseUrl($this->API_URL);
     }
